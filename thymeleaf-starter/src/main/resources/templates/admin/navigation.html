@@ -1,0 +1,103 @@
+<th:block th:fragment="navigation" xmlns:th="http://www.thymeleaf.org">
+<a class="navbar-brand" href="/admin" th:text="#{admin.title}"></a>
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav navbar-sidenav" id="settingsAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" th:title="#{admin.dashboard}">
+            <a class="nav-link" href="/admin">
+                <i class="fa fa-fw fa-dashboard"></i>
+                <span class="nav-link-text" th:text="#{admin.dashboard}"></span>
+            </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" th:title="#{admin.posts}">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePosts" data-parent="#settingsAccordion">
+                <i class="fa fa-fw fa-thumb-tack"></i>
+                <span class="nav-link-text" th:text="#{admin.posts}"></span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapsePosts">
+                <li>
+                    <a href="/admin/posts" th:text="#{admin.posts.all}"></a>
+                </li>
+                <li>
+                    <a href="/admin/newPost" th:text="#{admin.posts.add.new}"></a>
+                </li>
+                <li>
+                    <a href="/admin/categories" th:text="#{admin.posts.categories}"></a>
+                </li>
+                <li>
+                    <a href="/admin/tags" th:text="#{admin.posts.tags}"></a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" th:title="#{admin.pages}">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePages" data-parent="#settingsAccordion">
+                <i class="fa fa-fw fa-file"></i>
+                <span class="nav-link-text" th:text="#{admin.pages}"></span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapsePages">
+                <li>
+                    <a href="/admin/pages" th:text="#{admin.pages.all}"></a>
+                </li>
+                <li>
+                    <a href="/admin/newPage" th:text="#{admin.pages.add.new}"></a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" th:title="#{admin.comments}">
+            <a class="nav-link" href="/admin/comments">
+                <i class="fa fa-fw fa-comments"></i>
+                <span class="nav-link-text" th:text="#{admin.comments}"></span>
+            </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" th:title="#{admin.users}">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseUsers" data-parent="#settingsAccordion">
+                <i class="fa fa-fw fa-user"></i>
+                <span class="nav-link-text" th:text="#{admin.users}"></span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseUsers">
+                <li>
+                    <a href="/admin/users" th:text="#{admin.users.all}"></a>
+                </li>
+                <li>
+                    <a href="/admin/addUser" th:text="#{admin.users.add}"></a>
+                </li>
+                <li>
+                    <a href="/profile" th:text="#{admin.users.profile}"></a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" th:title="#{admin.settings}">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSettings" data-parent="#settingsAccordion">
+                <i class="fa fa-fw fa-sliders"></i>
+                <span class="nav-link-text" th:text="#{admin.settings}"></span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseSettings">
+                <li>
+                    <a href="/admin/generalSettings" th:text="#{admin.settings.general}"></a>
+                </li>
+                <li>
+                    <a href="/admin/writing" th:text="#{admin.settings.writing}"></a>
+                </li>
+                <li>
+                    <a href="/admin/reading" th:text="#{admin.settings.reading}"></a>
+                </li>
+                <li>
+                    <a href="/admin/discussion" th:text="#{admin.settings.discussion}"></a>
+                </li>
+                <li>
+                    <a href="/admin/permalinks" th:text="#{admin.settings.permalinks}"></a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+            <a class="nav-link text-center" id="sidenavToggler">
+                <i class="fa fa-fw fa-angle-left"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</th:block>

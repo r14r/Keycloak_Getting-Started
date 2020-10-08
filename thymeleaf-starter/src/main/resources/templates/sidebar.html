@@ -1,0 +1,69 @@
+<th:block th:fragment="sidebar" xmlns:th="http://www.thymeleaf.org">
+<div class="card my-4">
+    <h5 class="card-header" th:text="#{search.title}"></h5>
+    <div class="card-body">
+        <form action="/search" method="get">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" th:placeholder="#{search.placeholder}" th:title="#{search.perform}">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="submit" th:text="#{search.perform}"></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card my-4">
+    <h5 class="card-header" th:text="#{archives.title}"></h5>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="list-unstyled mb-0">
+                    <li th:each="archive: ${archives}">
+                        <a th:text="@{${#temporals.format(archive.month.atEndOfMonth(), 'MMMM yyyy')} + ' (' + ${archive.count} + ')'}"
+                           th:href="${@urlUtils.postListMonth(archive.month.year, archive.month.monthValue)}"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card my-4">
+    <h5 class="card-header" th:text="#{categories.title}"></h5>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="list-unstyled mb-0">
+                    <li th:each="category: ${categories}">
+                        <a th:text="${category.name}" th:href="${@urlUtils.postListByCategory(category)}"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card my-4" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <h5 class="card-header" th:text="#{meta.title}"></h5>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12" sec:authorize="isFullyAuthenticated()">
+                <a href="javascript: document.logoutForm.submit()" role="menuitem" th:text="#{meta.logout}"></a>
+                <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+                    <input hidden type="submit" />
+                </form>
+            </div>
+            <div class="col-lg-12" sec:authorize="isFullyAuthenticated()">
+                <a th:text="#{meta.admin}" href="/admin"></a>
+            </div>
+            <div class="col-lg-12" sec:authorize="!isFullyAuthenticated()">
+                <a th:text="#{meta.login}" href="/login"></a>
+            </div>
+            <div class="col-lg-12">
+                <a th:text="#{meta.entries.feed}" href="/feed"></a>
+            </div>
+            <div class="col-lg-12">
+                <a th:text="#{meta.comments.feed}" href="/comments/feed"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</th:block>

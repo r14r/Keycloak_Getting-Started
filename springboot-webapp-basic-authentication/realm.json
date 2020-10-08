@@ -1,0 +1,49 @@
+{
+  "realm": "getting-started",
+  "enabled": true,
+  "sslRequired": "external",
+  "roles": {
+    "realm": [
+      {
+        "name": "Users",
+        "composite": false,
+        "clientRole": false
+      },
+      {
+        "name": "Admin",
+        "description": "Administrative privileges",
+        "composite": true,
+        "composites": {
+          "realm": [
+            "Users"
+          ]
+        }
+      }
+    ]
+  },
+  "defaultRoles": [
+    "Users"
+  ],
+  "requiredCredentials": [
+    "password"
+  ],
+
+  "clients": [
+    {
+      "clientId": "getting-started",
+      "rootUrl": "http://localhost:9000",
+      "adminUrl": "http://localhost:9000",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "alwaysDisplayInConsole": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "**********",
+      "redirectUris": [
+        "http://localhost:9000/*"
+      ],
+      "webOrigins": [
+        "http://localhost:9000"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+h1 {
+	th-text: "#{welcome}";
+}
+
+p:first-of-type {
+	th-utext: "#{intro}";
+}
+
+h3 + ul {
+	th-remove: "all-but-first";
+}
+
+ul li:first-child {
+	th-each: "link : ${links}";
+}
+
+ul li:first-child a {
+	bean-use: "${link}";
+}
+
+div {
+	sample-removetagunless: "'false'";
+}
+
+body > table:first-of-type > thead > tr th:first-child {
+    th-text: "#{msgs.headers.name}"
+}
+
+body > table:first-of-type > thead > tr th:nth-child(2) {
+    th-text: "#{msgs.headers.price}"
+}
+
+body > table:first-of-type > tbody > tr:first-child {
+	th-each:"prod : ${allProducts}";
+}
+
+body > table:first-of-type > tbody > tr > td:first-child {
+    th-text: "${prod.name}"
+}
+
+body > table:first-of-type > tbody > tr > td:nth-child(2) {
+    th-text: "${#numbers.formatDecimal(prod.price,1,2)}"
+}
+
+
+
+table.users tr:first-child:wrap(2) {
+	th-each:"user : ${users}";
+}
+
+table.users tr:nth-child(3):wrap("*") {
+	th-remove:"all";
+}
+
+table.users tr:first-child td:first-child {
+	th-text:"${user.login}" 
+}
+
+table.users tr:first-child td:nth-child(2) {
+	th-text:"${user.name}" 
+}
+
+table.users tr:nth-child(2) td {
+	th-text:"${user.address}" 
+}
+

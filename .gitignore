@@ -1,0 +1,34 @@
+**/.autoenv.d
+**/.autoenv
+
+# Eclipse
+**/.project
+**/.classpath
+**/.settings/
+**/bin/
+
+# IntelliJ
+**/.idea
+**/*.ipr
+**/*.iml
+**/*.iws
+**out/
+
+# Visual Studio Code
+.vscode
+
+# OSX
+.DS_Store
+
+# Vim
+*.swp
+*.swo
+
+# patch
+*.orig
+*.rej
+
+# Gradle
+**/.gradle/
+**/build/
+!**/gradle/wrapper/gradle-wrapper.jar

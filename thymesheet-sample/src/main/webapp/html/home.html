@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Thymesheet Sample Homepage</title>
+<link rel="stylesheet" href="../resources/sample.css"
+	data-th-href="@{/resources/sample.css}" type="text/css" />
+<link rel="thymesheet" href="/tss/home.tss" />
+</head>
+<body>
+
+	<h1>Welcome</h1>
+	<p>Introduction to Thymesheet</p>
+
+	<p>Thymesheet is a plugin for Thymeleaf which allows you to add Thymeleaf attributes from an external 'thymesheet' file, much like a CSS file.</p>
+	
+
+	<p>See also an <a href="xml/">XML demo</a></p>
+
+	<h2>Product Table</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Oranges</td>
+				<td>0.99</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<h2>User Table</h2>
+	<table class="users">
+	    <tr>
+	        <td>user1</td>
+	        <td>A User</td>
+	    </tr>
+	    <tr>
+	        <td colspan="2">Outer Space</td>
+	    </tr>
+
+	    <tr>
+	        <td>user2</td>
+	        <td>J Bloggs</td>
+	    </tr>
+	    <tr>
+	        <td colspan="2">United Kingdom</td>
+	    </tr>
+	</table>
+	
+
+	<h3>Related Links</h3>
+	<ul>
+		<li><a href="http://www.example.com">An example link</a></li>
+		<li><a href="http://www.google.com">A second example link</a></li>
+	</ul>
+
+	<hr />
+
+	<div style="background: grey">This should NOT be on a grey
+		background and proves a custom dialect has worked in a tss file.</div>
+		
+	<footer data-th-substituteby="/html/fragment.html :: #headerfragment">Logo goes here</footer>
+		
+</body>
+</html>

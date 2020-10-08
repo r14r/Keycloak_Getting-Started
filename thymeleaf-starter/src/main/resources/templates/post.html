@@ -1,0 +1,68 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{head :: head}"></head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:insert="~{header :: header}"></nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="mt-4" th:text="${post.title}"></h1>
+                <p class="lead">
+                    by <a href="#" th:text="${post.author.userName}"></a>
+                </p>
+                <hr>
+                <p>
+                    <span th:text="#{post.published.at}"></span>
+                    <span th:text="${#temporals.format(post.publishedAt.toZonedDateTime(), 'MMMM dd, YYYY HH:mm')}"></span>
+                </p>
+                <hr>
+                <span th:text="${post.content}"></span>
+                <hr>
+                <h5 th:text="#{post.comment.list}"></h5>
+                <div th:each="comment: ${post.comments}" th:id="'comment-' + ${comment.id}" class="media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="//placehold.it/50x50" alt="">
+                    <div class="media-body">
+                        <h5 th:text="${comment.name}" class="mt-0"></h5>
+                        <h6 th:text="${#temporals.format(comment.createdAt.toZonedDateTime(), 'MMMM dd, YYYY HH:mm')}"></h6>
+                        <span th:text="${comment.comment}"></span>
+                    </div>
+                </div>
+                <hr>
+                <div class="card my-4">
+                    <h5 class="card-header" th:text="#{post.comment.leaveComment}"></h5>
+                    <div class="card-body">
+                        <form th:action="@{'/post/' + ${post.id} + '/comment'}" th:object="${newComment}" method="post">
+                            <div class="form-group">
+                                <label for="name" th:text="#{post.comment.name}"></label>
+                                <input th:field="*{name}" type="text" class="form-control" th:classappend="${#fields.hasErrors('name') ? 'is-invalid' : ''}" id="name" required>
+                                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" th:text="#{post.comment.email}"></label>
+                                <input th:field="*{email}" type="email" class="form-control" th:classappend="${#fields.hasErrors('email') ? 'is-invalid' : ''}" id="email" required>
+                                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="invalid-feedback"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="web-site" th:text="#{post.comment.web.site}"></label>
+                                <input th:field="*{webSite}" type="url" class="form-control" th:classappend="${#fields.hasErrors('webSite') ? 'is-invalid' : ''}" id="web-site">
+                                <div th:if="${#fields.hasErrors('webSite')}" th:errors="*{webSite}" class="invalid-feedback">Web site Error</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment" th:text="#{post.comment.comment}"></label>
+                                <textarea th:field="*{comment}" id="comment" class="form-control" th:classappend="${#fields.hasErrors('comment') ? 'is-invalid' : ''}" rows="5" required></textarea>
+                                <div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" class="invalid-feedback">Comment Error</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Post comment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" th:insert="~{sidebar :: sidebar}"></div>
+        </div>
+    </div>
+    <footer th:replace="~{footer :: footer}"></footer>
+    <script src="/webjars/jquery/3.3.1/dist/jquery.slim.min.js" ></script>
+    <script src="/webjars/bootstrap/4.1.1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

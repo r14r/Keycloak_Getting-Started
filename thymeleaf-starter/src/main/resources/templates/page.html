@@ -1,0 +1,29 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{head :: head}"></head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:insert="header"></nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="mt-4" th:text="${page.title}"></h1>
+                <p class="lead">
+                    by <a href="#">Start Bootstrap</a>
+                </p>
+                <hr>
+                <p>
+                    <span th:text="#{page.published.at}"></span>
+                    <span th:text="${#temporals.format(page.publishedAt, 'MMMM dd, YYYY HH:mm')}"></span>
+                </p>
+                <hr>
+                <span th:text="${page.content}"></span>
+            </div>
+            <div class="col-md-4" th:insert="~{sidebar :: sidebar}"></div>
+        </div>
+    </div>
+    <footer th:replace="~{footer :: footer}"></footer>
+    <script src="/webjars/jquery/3.3.1/dist/jquery.slim.min.js" ></script>
+    <script src="/webjars/bootstrap/4.1.1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
